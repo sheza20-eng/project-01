@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title> TASTEFULBYTES </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;;
+            box-sizing: border-box;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 100px;
+            background: #acb4b5;
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background-image: url(pics/hero.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #213032;
+            margin-right: 40px;
+        }
+
+        .nav-bar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-bar ul li a {
+            display: block;
+            color: #edffef;
+            font-size: 20px;
+            padding: 8px 25px;
+            transition: .2s;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .nav-bar ul li:hover a {
+            background-color: #97a2a3;
+            color: #213032;
+            cursor: pointer;
+        }
+
+        .content {
+            position: absolute;
+            top: 40%;
+            left: 8%;
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            color: #131d1f;
+            font-size: 75px;
+            margin: 20px 0px 20px;
+        }
+
+        h3 {
+            color: #bdeaf0;
+            font-size: 25px;
+            margin-bottom: 50px;
+        }
+
+        h4 {
+            color: #bdeaf0;
+            letter-spacing: 2px;
+            font-size: 20px;
+        }
+
+        .button {
+            position: absolute;
+            background-color: #213032;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid black;
+            font-weight: bold;
+            padding: 13px 30px;
+            transform: .4s;
+        }
+
+        .button:hover {
+            background-color: #97a2a3;
+            color: #213032;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        .about {
+            width: 100%;
+            padding: 100px 0px;
+            background-color: #314e52;
+        }
+
+        .about img {
+            height: auto;
+            width: 430px;
+            border-radius: 20px 0 20px 0;
+        }
+
+        .main {
+            width: 1130px;
+            max-width: 95%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about h2 {
+            color: #edffef;
+            font-size: 75px;
+            text-transform: capitalize;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-text p {
+            color: #97a2a3;
+            letter-spacing: 1px;
+            line-height: 28px;
+            font-size: 18px;
+            margin-bottom: 45px;
+        }
+
+        .about-text {
+            width: 500px;
+        }
+
+        /*Recipe Section CSS*/
+        .recipe {
+            width: 100%;
+            padding: 100px 0px;
+            background-color: #213032;
+        }
+
+        .recipe h2 {
+            color: #edffef;
+            font-size: 75px;
+            text-transform: capitalize;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .box .card img {
+            width: 100%;
+            height: 1005;
+            object-fit: cover;
+
+        }
+
+        .box .card .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background-color: #edffef;
+            color: #182f32;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .box .card:hover .content {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #213032;
+        }
+
+        .box .card p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .box .card button {
+            position: relative;
+            background-color: #213032;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid black;
+            font-weight: bold;
+            transform: .4s;
+            padding: 13px 30px;
+        }
+
+        .box .card button:hover {
+            background-color: #97a2a3;
+            color: #213032;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        /*Categories*/
+        .categories {
+            width: 100%;
+            padding: 100px 0px;
+            background-color: #314e52;
+        }
+
+        .categories h2 {
+            color: #edffef;
+            font-size: 75px;
+            text-transform: capitalize;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .ca-card {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            border: 5px solid #ccc;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .box .ca-card .content {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            padding: 15px;
+            background-color: #edffef;
+            color: #182f32;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .box .ca-card:hover .content {
+            opacity: 1;
+        }
+
+        .ca-card h3 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #213032;
+        }
+
+        .box .ca-card p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .box .ca-card button {
+            position: relative;
+            background-color: #213032;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid black;
+            font-weight: bold;
+            transform: .4s;
+            padding: 13px 30px;
+        }
+
+        .box .ca-card button:hover {
+            background-color: #97a2a3;
+            color: #213032;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        .box .ca-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /*Contact form*/
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            background: #182f32;
+        }
+
+        .contact-info,
+        .contact-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+            text-align: center;
+            color: #edffef;
+            font-size: 25px;
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #edffef;
+        }
+
+        .contact-form form {
+            text-align: center;
+        }
+
+        .contact-form label,
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .contact-form button {
+            background-color: #213032;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid black;
+            font-weight: bold;
+            transform: .4s;
+            padding: 10px 0px;
+        }
+
+        .contact-form button:hover {
+            background-color: #97a2a3;
+            color: #213032;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        .contact-form label {
+            text-align: left;
+            color: #edffef;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 8px;
+        }
+
+        .contact-info p {
+            padding: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            color: #97a2a3;
+            text-align: center;
+            line-height: 40px;
+            font-size: 38px;
+        }
+
+        .social-icon:hover {
+            color: #314e52;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 20px 0;
+            background: #182f32;
+        }
+
+        footer h5 {
+            font-size: 25px;
+            margin-top: 10px;
+            text-align: center;
+            color: #285358;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <form action="#" class="searchbar"
+        input type="text" placeholder="serach recipie">
+       <button type="submit">search</button> </form>
+
+        <div class="logo">TASTEFULBYTES</div>
+        <div class="nav-bar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="hero">
+        <div class="content">
+            <h4>Unleash Your Culinary Passion</h4>
+            <h1>Discover Taste Sensations</h1>
+            <h3>Elevate Your Cooking Game</h3>
+            <div class="button" id="startCookingBtn">Start Cooking</div>
+        </div>
+    </div>
+    <!----About Section Start---------------------------------->
+    <section class="about">
+        <h2>About Us</h2>
+        <div class="main">
+            <img src="pics/20 Indian Thali Ideas.jfif"
+                alt="C:\Users\Admin\Desktop\.html\chiki.html\pics\20 Indian Thali Ideas.jfif">
+            <div class="about-text">
+                <p>Welcome to our recipe website, where culinary inspiration meets delicious creations! Whether you're a
+                    seasoned chef or a passionate home cook, we are here to ignite your taste buds and guide you on a
+                    delightful culinary journey. Our extensive collection of recipes covers a wide range of cuisines,
+                    from comforting classics to innovative fusion dishes. Each recipe is thoughtfully crafted, tested,
+                    and presented with step-by-step instructions, ensuring that even the novice cook can create
+                    extraordinary meals. We believe that cooking is an art form that brings people together, and our
+                    goal is to empower you to explore your culinary creativity and make every meal a masterpiece. So
+                    come on in, explore our diverse recipe collection, and let's embark on a delightful gastronomic
+                    adventure together!</p>
+
+            </div>
+        </div>
+    </section>
+    <!-----Recipes Section Start---------------------------------->
+    <div class="recipe">
+        <h2>Featured Recipes</h2>
+        <div class="box">
+            <div class="card">
+                <img src="pics/r1.jfif" alt="">
+                <div class="content">
+                    <h3>indian thaal</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r2.jfif" alt="">
+                <div class="content">
+                    <h3>sufiyani pulo</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r3.jfif" alt="">
+                <div class="content">
+                    <h3>charsi karhai</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r4.jfif" alt="">
+                <div class="content">
+                    <h3>paneer reshmi</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r5.jfif" alt="">
+                <div class="content">
+                    <h3>cheesy samosa</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r6.png" alt="">
+                <div class="content">
+                    <h3>bihari tikka</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r7.jfif" alt="">
+                <div class="content">
+                    <h3>malai chicken kofta</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pics/r8.jfif" alt="">
+                <div class="content">
+                    <h3>masala dosa</h3>
+                    <P>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</P>
+                    <button>View Recipe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------categories section-------------------------------->
+    <div class="categories">
+        <h2>categories</h2>
+        <div class="box">
+            <div class="ca-card">
+                <img src="pics/maincourse.jfif" alt="">
+                <div class="content">
+                    <h3>Main Courses</h3>
+                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="ca-card">
+                <img src="pics/desserts.jfif" alt="">
+                <div class="content">
+                    <h3>Desserts</h3>
+                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="ca-card">
+                <img src="pics/healthyeats.jfif" alt="">
+                <div class="content">
+                    <h3>Healthy Eats</h3>
+                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="ca-card">
+                <img src="pics/baking.jfif" alt="">
+                <div class="content">
+                    <h3>Baking</h3>
+                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------contact section-------------------------->
+    <section class="contact">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Address:</strong> karachi,pakistan </p>
+            <p><strong>Phone:</strong> 009215783538 </p>
+            <p><strong>Email:</strong> tastefulbytes@yahoo.com </p>
+        </div>
+        <div class="contact-form">
+            <h2>Contact Form</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>
+            <a href="#" class="social-icon"> <i class="fab fa-twitter"></i> </a>
+            <a href="#" class="social-icon"> <i class="fab fa-instagram"></i> </a>
+        </div>
+        <h5>CopyRight © 2023 TASTEFULBYTES </h5>
+    </footer>
+
+</body>
+<script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('.nav-bar a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        alert(`Thank you, ${name}! Your message has been received.`);
+        this.reset();
+    });
+    
+
+        // Using class instead of id
+        document.querySelector("startcookingbtn").addEventListener("click", function() {
+            alert("Let's start cooking!");
+        });
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    
+
+</script>
+</html>
